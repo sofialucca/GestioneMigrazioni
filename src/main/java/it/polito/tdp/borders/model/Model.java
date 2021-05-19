@@ -1,7 +1,5 @@
 package it.polito.tdp.borders.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,14 +40,6 @@ public class Model {
 		}
 	}
 	
-	public List<CountryAndNumber> getCountryAndNumber() {
-		List<CountryAndNumber> list = new ArrayList<>() ;
-		
-		for(Country c: graph.vertexSet()) {
-			list.add(new CountryAndNumber(c, graph.degreeOf(c))) ;
-		}
-		Collections.sort(list);
-		return list ;
-	}
+	
 
 }
