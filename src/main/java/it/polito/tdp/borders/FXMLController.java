@@ -5,9 +5,11 @@
 package it.polito.tdp.borders;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.borders.model.Country;
+import it.polito.tdp.borders.model.CountryAndNumber;
 import it.polito.tdp.borders.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,7 +47,11 @@ public class FXMLController {
 			
 			
 			//calcola numero di confini
-			// TODO
+			List<CountryAndNumber> result = model.getCountryAndNumbers();
+			for(CountryAndNumber cn: result) {
+				this.txtResult.appendText(cn.toString()+"\n");
+			}
+			this.boxNazione.getItems().setAll(model.getVertex());
 			
 
 		} catch (NumberFormatException e) {
@@ -65,6 +71,13 @@ public class FXMLController {
     	}
     	txtResult.appendText("SIMULAZIONE A PARTIRE DA: " + partenza +"\n\n");
     	
+    	model.setSimulazione(partenza);
+    	List<CountryAndNumber> result = model.getCountryMigranti();
+    	int T = model.getT();
+    	txtResult.appendText("Impiegati: "+T+" passi\n");
+		for(CountryAndNumber cn: result) {
+			this.txtResult.appendText("\n"+cn.toString());
+		}
     	//TODO
     }
 
